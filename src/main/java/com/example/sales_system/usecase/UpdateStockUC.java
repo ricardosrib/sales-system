@@ -1,0 +1,33 @@
+package com.example.sales_system.usecase;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.example.sales_system.domain.model.StockItemModel;
+import com.example.sales_system.domain.services.StockService;
+import com.example.sales_system.usecase.dto.StockItemDTO;
+
+@Component
+public class UpdateStockUC {
+    private StockService stockService;
+
+    @Autowired
+    public UpdateStockUC(StockService stockService) {
+        this.stockService = stockService;
+    }
+
+    public StockItemDTO run(long productId, int quantity) {
+        if (productId <= 0) {
+            throw new IllegalArgumentException("Product ID must be positive");
+        }
+        if (quantity == 0) {
+            throw new IllegalArgumentException("Quantity cannot be zero");
+        }
+        
+        StockItemModel stockItem = stockService.addStock(productId, quantity);
+        if (stockItem == null) {
+            throw new IllegalArgumentException("Product not found with ID: " + productId);
+        }
+        return StockItemDTO.fromModel(stockItem);
+    }
+}

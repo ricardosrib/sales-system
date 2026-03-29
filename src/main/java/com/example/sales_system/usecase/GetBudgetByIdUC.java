@@ -1,0 +1,26 @@
+package com.example.sales_system.usecase;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.example.sales_system.domain.model.BudgetModel;
+import com.example.sales_system.domain.services.SalesService;
+import com.example.sales_system.usecase.dto.BudgetDTO;
+
+@Component
+public class GetBudgetByIdUC {
+    private SalesService salesService;
+
+    @Autowired
+    public GetBudgetByIdUC(SalesService salesService) {
+        this.salesService = salesService;
+    }
+
+    public BudgetDTO run(long budgetId) {
+        BudgetModel budget = salesService.getBudgetById(budgetId);
+        if (budget == null) {
+            throw new IllegalArgumentException("Budget not found with ID: " + budgetId);
+        }
+        return BudgetDTO.fromModel(budget);
+    }
+}
