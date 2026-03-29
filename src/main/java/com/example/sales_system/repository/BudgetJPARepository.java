@@ -1,9 +1,9 @@
-package com.example.sales_system.repository.repositoryImpl;
+package com.example.sales_system.repository;
 
 import com.example.sales_system.domain.model.BudgetModel;
-import com.example.sales_system.repository.entitiesJPA.BudgetEntity;
-import com.example.sales_system.repository.interfaceJPA.BudgetJPA;
-import com.example.sales_system.repository.repositoryInterface.IBudgetRepository;
+import com.example.sales_system.repository.jpa_entities.BudgetEntity;
+import com.example.sales_system.repository.jpa_interface.BudgetJPA;
+import com.example.sales_system.repository.repository_interface.IBudgetRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 

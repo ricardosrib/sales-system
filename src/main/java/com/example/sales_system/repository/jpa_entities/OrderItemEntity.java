@@ -1,4 +1,4 @@
-package com.example.sales_system.repository.entitiesJPA;
+package com.example.sales_system.repository.jpa_entities;
 
 import com.example.sales_system.domain.model.OrderItemModel;
 import com.example.sales_system.domain.model.ProductModel;

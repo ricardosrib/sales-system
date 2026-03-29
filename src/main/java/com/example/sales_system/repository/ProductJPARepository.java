@@ -1,9 +1,9 @@
-package com.example.sales_system.repository.repositoryImpl;
+package com.example.sales_system.repository;
 
 import com.example.sales_system.domain.model.ProductModel;
-import com.example.sales_system.repository.entitiesJPA.ProductEntity;
-import com.example.sales_system.repository.interfaceJPA.ProductJPA;
-import com.example.sales_system.repository.repositoryInterface.IProductRepository;
+import com.example.sales_system.repository.jpa_entities.ProductEntity;
+import com.example.sales_system.repository.jpa_interface.ProductJPA;
+import com.example.sales_system.repository.repository_interface.IProductRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 

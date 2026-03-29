@@ -2,8 +2,8 @@ package com.example.sales_system.domain.services;
 
 import com.example.sales_system.domain.model.ProductModel;
 import com.example.sales_system.domain.model.StockItemModel;
-import com.example.sales_system.repository.repositoryInterface.IProductRepository;
-import com.example.sales_system.repository.repositoryInterface.IStockRepository;
+import com.example.sales_system.repository.repository_interface.IProductRepository;
+import com.example.sales_system.repository.repository_interface.IStockRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

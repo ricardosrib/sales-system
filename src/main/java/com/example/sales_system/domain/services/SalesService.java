@@ -1,9 +1,9 @@
 package com.example.sales_system.domain.services;
 
 import com.example.sales_system.domain.model.*;
-import com.example.sales_system.repository.repositoryInterface.IBudgetRepository;
-import com.example.sales_system.repository.repositoryInterface.ICustomerRepository;
-import com.example.sales_system.repository.repositoryInterface.IStockRepository;
+import com.example.sales_system.repository.repository_interface.IBudgetRepository;
+import com.example.sales_system.repository.repository_interface.ICustomerRepository;
+import com.example.sales_system.repository.repository_interface.IStockRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

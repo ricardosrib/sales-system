@@ -1,7 +1,8 @@
-package com.example.sales_system.repository.interfaceJPA;
+package com.example.sales_system.repository.jpa_interface;
 
-import com.example.sales_system.repository.entitiesJPA.StockItemEntity;
 import org.springframework.data.repository.ListCrudRepository;
+
+import com.example.sales_system.repository.jpa_entities.StockItemEntity;
 
 import java.util.Optional;
 

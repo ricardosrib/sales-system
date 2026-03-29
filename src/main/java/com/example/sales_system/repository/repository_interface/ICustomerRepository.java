@@ -1,4 +1,4 @@
-package com.example.sales_system.repository.repositoryInterface;
+package com.example.sales_system.repository.repository_interface;
 
 import com.example.sales_system.domain.model.CustomerModel;
 
