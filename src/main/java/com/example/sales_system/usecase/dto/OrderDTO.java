@@ -7,6 +7,9 @@ public class OrderDTO {
     private long productId;
     private int quantity;
 
+    public OrderDTO() {
+    }
+
     public OrderDTO(long productId, int quantity) {
         if (productId <= 0) {
             throw new IllegalArgumentException("Product ID must be positive");
@@ -22,8 +25,16 @@ public class OrderDTO {
         return productId;
     }
 
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
