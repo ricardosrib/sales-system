@@ -12,10 +12,10 @@ public class OrderDTO {
 
     public OrderDTO(long productId, int quantity) {
         if (productId <= 0) {
-            throw new IllegalArgumentException("Product ID must be positive");
+            throw new com.example.sales_system.exception.BadRequestException("Product ID must be positive");
         }
         if (quantity <= 0) {
-            throw new IllegalArgumentException("Quantity must be positive");
+            throw new com.example.sales_system.exception.BadRequestException("Quantity must be positive");
         }
         this.productId = productId;
         this.quantity = quantity;
@@ -44,10 +44,10 @@ public class OrderDTO {
 
     public static OrderDTO fromModel(OrderItemModel item) {
         if (item == null) {
-            throw new IllegalArgumentException("Order item model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Order item model cannot be null");
         }
         if (item.getProduct() == null) {
-            throw new IllegalArgumentException("Product in order item cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Product in order item cannot be null");
         }
         return new OrderDTO(item.getProduct().getId(), item.getQuantity());
     }

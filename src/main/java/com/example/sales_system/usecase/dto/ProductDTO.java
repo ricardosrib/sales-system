@@ -28,7 +28,7 @@ public class ProductDTO {
 
     public static ProductDTO fromModel(ProductModel product) {
         if (product == null) {
-            throw new IllegalArgumentException("Product model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Product model cannot be null");
         }
         return new ProductDTO(product.getId(), product.getDescription(), product.getUnitPrice());
     }

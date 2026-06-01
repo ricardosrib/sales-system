@@ -74,7 +74,7 @@ public class BudgetDTO {
 
     public static BudgetDTO fromModel(BudgetModel budget) {
         if (budget == null) {
-            throw new IllegalArgumentException("Budget model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Budget model cannot be null");
         }
         
         List<OrderItemDTO> items = new ArrayList<>(budget.getItems().size());

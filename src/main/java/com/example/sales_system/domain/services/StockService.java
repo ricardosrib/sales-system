@@ -7,6 +7,8 @@ import com.example.sales_system.repository.repository_interface.IStockRepository
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import com.example.sales_system.exception.BadRequestException;
+import com.example.sales_system.exception.NotFoundException;
 
 @Service
 public class StockService {
@@ -53,10 +55,10 @@ public class StockService {
     public void deductStock(long id, int quantity) {
         StockItemModel item = stock.findById(id);
         if (item == null) {
-            throw new IllegalArgumentException("Product does not exist.");
+            throw new NotFoundException("Product does not exist.");
         }
         if (item.getQuantity() < quantity) {
-            throw new IllegalArgumentException("Insufficient stock quantity");
+            throw new BadRequestException("Insufficient stock quantity");
         }
         int newQuantity = item.getQuantity() - quantity;
         item.setQuantity(newQuantity);

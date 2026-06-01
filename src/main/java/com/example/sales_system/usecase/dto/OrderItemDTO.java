@@ -46,10 +46,10 @@ public class OrderItemDTO {
 
     public static OrderItemDTO fromModel(OrderItemModel item) {
         if (item == null) {
-            throw new IllegalArgumentException("Order item model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Order item model cannot be null");
         }
         if (item.getProduct() == null) {
-            throw new IllegalArgumentException("Product in order item cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Product in order item cannot be null");
         }
         
         return new OrderItemDTO(

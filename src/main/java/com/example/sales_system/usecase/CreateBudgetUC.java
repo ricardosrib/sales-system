@@ -12,6 +12,8 @@ import com.example.sales_system.domain.model.ProductModel;
 import com.example.sales_system.domain.services.SalesService;
 import com.example.sales_system.domain.services.StockService;
 import com.example.sales_system.usecase.dto.BudgetDTO;
+import com.example.sales_system.exception.BadRequestException;
+import com.example.sales_system.exception.NotFoundException;
 import com.example.sales_system.usecase.dto.OrderDTO;
 
 @Component
@@ -27,21 +29,21 @@ public class CreateBudgetUC {
 
     public BudgetDTO run(long customerId, List<OrderDTO> items) {
         if (items == null || items.isEmpty()) {
-            throw new IllegalArgumentException("Items list cannot be null or empty");
+            throw new BadRequestException("Items list cannot be null or empty");
         }
         
         OrderModel order = new OrderModel(0);
         for (OrderDTO item : items) {
             if (item == null) {
-                throw new IllegalArgumentException("Item cannot be null");
+                throw new BadRequestException("Item cannot be null");
             }
             if (item.getQuantity() <= 0) {
-                throw new IllegalArgumentException("Item quantity must be positive");
+                throw new BadRequestException("Item quantity must be positive");
             }
             
             ProductModel product = stockService.productById(item.getProductId());
             if (product == null) {
-                throw new IllegalArgumentException("Product not found with ID: " + item.getProductId());
+                throw new NotFoundException("Product not found with ID: " + item.getProductId());
             }
             
             OrderItemModel orderItem = new OrderItemModel(product, item.getQuantity());

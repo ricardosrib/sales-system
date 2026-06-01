@@ -40,7 +40,7 @@ public class CustomerDTO {
 
     public static CustomerDTO fromModel(CustomerModel customer) {
         if (customer == null) {
-            throw new IllegalArgumentException("Customer model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Customer model cannot be null");
         }
         return new CustomerDTO(
             customer.getId(),

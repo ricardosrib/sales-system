@@ -95,7 +95,7 @@ public class SalesController {
     @PostMapping("/budgets")
     public BudgetDTO createBudget(@RequestBody CreateBudgetRequest request) {
         if (request == null) {
-            throw new IllegalArgumentException("Request body cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Request body cannot be null");
         }
         return createBudgetUC.run(request.getCustomerId(), request.getItems());
     }

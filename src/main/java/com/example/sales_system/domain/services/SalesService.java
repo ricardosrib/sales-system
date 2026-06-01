@@ -7,6 +7,8 @@ import com.example.sales_system.repository.repository_interface.IStockRepository
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import com.example.sales_system.exception.BadRequestException;
+import com.example.sales_system.exception.NotFoundException;
 import java.util.List;
 
 @Service
@@ -43,7 +45,7 @@ public class SalesService {
         // Check if customer exists
         CustomerModel customer = this.customers.findById(customerId);
         if (customer == null) {
-            throw new IllegalArgumentException("Customer not found");
+            throw new NotFoundException("Customer not found");
         }
 
         // Associate customer with budget
@@ -62,23 +64,23 @@ public class SalesService {
     public BudgetModel confirmBudget(long id) {
         var budget = this.budgets.findById(id);
         if (budget == null) {
-            throw new IllegalArgumentException("Budget not found: " + id);
+            throw new NotFoundException("Budget not found: " + id);
         }
 
         if (budget.isFinalized()) {
-            throw new IllegalArgumentException("Budget already confirmed: " + id);
+            throw new BadRequestException("Budget already confirmed: " + id);
         }
 
         LocalDate expiration = budget.getBudgetDate().plusDays(21);
         if (LocalDate.now().isAfter(expiration)) {
-            throw new IllegalArgumentException("Budget expired on: " + expiration.toString());
+            throw new BadRequestException("Budget expired on: " + expiration.toString());
         }
 
         // Check stock availability for all items
         for (OrderItemModel item : budget.getItems()) {
             int available = stock.getStockQuantity(item.getProduct().getId());
             if (available < item.getQuantity()) {
-                throw new IllegalArgumentException("Insufficient stock for product: " + item.getProduct().getDescription() +
+                throw new BadRequestException("Insufficient stock for product: " + item.getProduct().getDescription() +
                         ". Available: " + available + ", Requested: " + item.getQuantity());
             }
         }

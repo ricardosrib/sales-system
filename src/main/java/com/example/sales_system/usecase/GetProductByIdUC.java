@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.example.sales_system.domain.model.ProductModel;
 import com.example.sales_system.domain.services.StockService;
 import com.example.sales_system.usecase.dto.ProductDTO;
+import com.example.sales_system.exception.NotFoundException;
 
 @Component
 public class GetProductByIdUC {
@@ -19,7 +20,7 @@ public class GetProductByIdUC {
     public ProductDTO run(long productId) {
         ProductModel product = stockService.productById(productId);
         if (product == null) {
-            throw new IllegalArgumentException("Product not found with ID: " + productId);
+            throw new NotFoundException("Product not found with ID: " + productId);
         }
         return ProductDTO.fromModel(product);
     }

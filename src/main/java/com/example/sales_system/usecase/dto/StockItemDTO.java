@@ -68,10 +68,10 @@ public class StockItemDTO {
 
     public static StockItemDTO fromModel(StockItemModel stockItem) {
         if (stockItem == null) {
-            throw new IllegalArgumentException("Stock item model cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Stock item model cannot be null");
         }
         if (stockItem.getProduct() == null) {
-            throw new IllegalArgumentException("Product in stock item cannot be null");
+            throw new com.example.sales_system.exception.BadRequestException("Product in stock item cannot be null");
         }
         
         return new StockItemDTO(
