@@ -67,6 +67,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>4.8.0</version>
+				<executions>
+					<execution>
+						<id>spotbugs</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>spotbugs</goal>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<failOnError>true</failOnError>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
